@@ -1,0 +1,49 @@
+﻿@page
+@model Aplicatie_Programari_Activitati_Nautice.Pages.Activitati.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Activitate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Activitate.Denumire" class="control-label"></label>
+                <input asp-for="Activitate.Denumire" class="form-control" />
+                <span asp-validation-for="Activitate.Denumire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activitate.Descriere" class="control-label"></label>
+                <input asp-for="Activitate.Descriere" class="form-control" />
+                <span asp-validation-for="Activitate.Descriere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activitate.Durata" class="control-label"></label>
+                <input asp-for="Activitate.Durata" class="form-control" />
+                <span asp-validation-for="Activitate.Durata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activitate.Pret" class="control-label"></label>
+                <input asp-for="Activitate.Pret" class="form-control" />
+                <span asp-validation-for="Activitate.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
