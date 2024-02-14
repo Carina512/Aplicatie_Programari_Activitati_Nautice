@@ -5,14 +5,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Programari</h1>
+<hr style="border: none; height: 2px; background-color: #3ecae9;">
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Fa-ti o programare!</a>
 </p>
 
 @foreach (var item in Model.Programare) {
-            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #ff6a00;">
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
 
                 <div style="flex: 1;">
                     <p><strong>Nume:</strong> @item.Nume</p>
