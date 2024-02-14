@@ -10,63 +10,40 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].Nume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].Prenume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].Activitate.Denumire)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].NrPersoane)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].PretTotal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programare[0].Activitate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
 @foreach (var item in Model.Programare) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prenume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activitate.Denumire)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrPersoane)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PretTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activitate.ID)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #ff6a00;">
+
+                <div style="flex: 1;">
+                    <p><strong>Nume:</strong> @item.Nume</p>
+                    <p><strong>Prenume:</strong> @item.Prenume</p>
+
+
+                    @if (item.Activitate != null)
+                    {
+                <p><strong>Activitatea aleasa</strong> @item.Activitate.Denumire</p>
+                    }
+                    else
+                    {
+                        <p><strong>Activitatea aleasa:</strong> Nu există informații despre medic</p>
+                    }
+                    <p><strong>Data programarii:</strong> @item.Data</p>
+                    <p><strong>Numar persoane:</strong> @item.NrPersoane</p>
+                    <p><strong>Pret:</strong> @item.PretTotal</p>
+
+
+
+                    <p>
+                       
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Sterge programarea | </a>
+                            <a asp-page="./Edit" asp-route-id="@item.ID">Modifica programarea | </a>
+                        
+
+                        <a asp-page="./Details" asp-route-id="@item.ID">Detalii programare</a>
+
+                    </p>
+                </div>
+            </div>
 }
-    </tbody>
-</table>
+   
+

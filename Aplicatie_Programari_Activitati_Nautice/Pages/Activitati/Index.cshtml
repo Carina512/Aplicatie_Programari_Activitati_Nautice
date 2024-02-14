@@ -10,45 +10,30 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Activitate[0].Denumire)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activitate[0].Descriere)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activitate[0].Durata)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activitate[0].Pret)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Activitate) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Denumire)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriere)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Durata)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pret)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div style="display:flex; gap:20px;">
+    @foreach (var item in Model.Activitate)
+    {
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #ff6a00;">
+            <p>
+                <strong>Nume:</strong> @Html.DisplayFor(modelItem => item.Denumire)
+            </p>
+            <p>
+                <strong>Prenume:</strong> @Html.DisplayFor(modelItem => item.Descriere)
+            </p>
+            <p>
+                <strong>Specializare:</strong> @Html.DisplayFor(modelItem => item.Durata)
+            </p>
+            <p>
+                <strong>Descriere:</strong> @Html.DisplayFor(modelItem => item.Pret)
+            </p>
+           
+                <p>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Modifica</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
+                </p>
+            
+            
+        </div>
+    }
+</div>
