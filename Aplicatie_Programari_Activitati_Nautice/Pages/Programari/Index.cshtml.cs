@@ -7,11 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Aplicatie_Programari_Activitati_Nautice.Data;
 using Aplicatie_Programari_Activitati_Nautice.models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Aplicatie_Programari_Activitati_Nautice.Pages.Programari
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
+        
+       
         private readonly Aplicatie_Programari_Activitati_Nautice.Data.Aplicatie_Programari_Activitati_NauticeContext _context;
 
         public IndexModel(Aplicatie_Programari_Activitati_Nautice.Data.Aplicatie_Programari_Activitati_NauticeContext context)
@@ -20,6 +26,8 @@ namespace Aplicatie_Programari_Activitati_Nautice.Pages.Programari
         }
 
         public IList<Programare> Programare { get;set; } = default!;
+
+       
 
         public async Task OnGetAsync()
         {

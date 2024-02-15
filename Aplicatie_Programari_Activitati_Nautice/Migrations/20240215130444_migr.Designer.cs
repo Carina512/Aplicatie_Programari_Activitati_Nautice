@@ -4,6 +4,7 @@ using Aplicatie_Programari_Activitati_Nautice.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aplicatie_Programari_Activitati_Nautice.Migrations
 {
     [DbContext(typeof(Aplicatie_Programari_Activitati_NauticeContext))]
-    partial class Aplicatie_Programari_Activitati_NauticeContextModelSnapshot : ModelSnapshot
+    [Migration("20240215130444_migr")]
+    partial class migr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

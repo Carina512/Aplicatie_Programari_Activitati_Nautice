@@ -29,7 +29,7 @@ namespace Aplicatie_Programari_Activitati_Nautice.Pages.Programari
             ActivitateList = _context.Activitate
            .Select(d => new SelectListItem { Value = d.ID.ToString(), Text = d.Denumire })
            .ToList();
-           /// ViewData["ActivitateID"] = new SelectList(_context.Activitate, "ID", "ID");
+           ViewData["ActivitateID"] = new SelectList(_context.Activitate, "ID", "Denumire");
             return Page();
         }
 

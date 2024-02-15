@@ -4,40 +4,47 @@
 @{
     ViewData["Title"] = "Create";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+<body>
+    <img src="~/css/poza.jpg" alt="Imagine de fundal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7;">
 
-<h1>Ofera-ne un review!</h1>
-<hr style="border: none; height: 2px; background-color: #3ecae9;">
+    <h1>Ofera-ne un review!</h1>
+    <hr style="border: none; height: 2px; background-color: #3ecae9;">
 
 
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Review.Name" class="control-label"></label>
-                <input asp-for="Review.Name" class="form-control" />
-                <span asp-validation-for="Review.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Review.Opinie" class="control-label"></label>
-                <input asp-for="Review.Opinie" class="form-control" />
-                <span asp-validation-for="Review.Opinie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Review.Nota" class="control-label"></label>
-                <input asp-for="Review.Nota" class="form-control" />
-                <span asp-validation-for="Review.Nota" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Review.Name" class="control-label"></label>
+                    <input asp-for="Review.Name" class="form-control" />
+                    <span asp-validation-for="Review.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Review.Opinie" class="control-label"></label>
+                    <input asp-for="Review.Opinie" class="form-control" />
+                    <span asp-validation-for="Review.Opinie" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Review.Nota" class="control-label"></label>
+                    <input asp-for="Review.Nota" class="form-control" />
+                    <span asp-validation-for="Review.Nota" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="Index">Inapoi</a>
+    </div>
+
+</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -4,61 +4,56 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
 
-<style>
-    .custom-button {
-        display: inline-block;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        color: #007bff;
-        background-color: mintcream;
-        border: 1px solid #007bff;
-        border-radius: 4px;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    }
+</head>
 
-        .custom-button:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-</style>
-
-<h1>Recenzii</h1>
-<hr style="border: none; height: 2px; background-color: #3ecae9;">
-
-<p>
-    <a asp-page="Create" class="custom-button">Adauga un review!</a>
-
-</p>
+<body>
+    
+    <img src="~/css/poza.jpg" alt="Imagine de fundal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7;">
+    <div style="display: flex; justify-content: space-between;">
+        <h1 style="margin-right: auto;">Recenzii</h1>
+        <p>
+            <a asp-page="Create" class="custom-button">Adauga un review!</a>
+        </p>
+    </div>
+    <hr style="border: none; height: 2px; background-color: #3ecae9;">
+    <div class="container">
+            <div style="display:flex;gap:40px;flex-wrap:wrap;justify-content:center;flex-direction:column;align-content:center;">
+            
+                
+              <div style="display:flex;gap:20px; max-width:1700px;flex-wrap:wrap;justify-content:flex-start;">
+                @foreach (var item in Model.Review)
+                     {
 
 
+                    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:350px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
+                        <p>
+                            <strong>Name:</strong> @Html.DisplayFor(modelItem => item.Name)
+                        </p>
+                        <p>
+                            <strong>Opinie:</strong> @Html.DisplayFor(modelItem => item.Opinie)
+                        </p>
+                        <p>
+                            <strong>Rating:</strong>
+                            <span>@Model.GetStarRating(item.Nota)</span>
+                        </p>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <p>
 
+                                <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                                <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
+                            </p>
+                        }
 
-<div style="display:flex;gap:20px">
-    @foreach (var item in Model.Review)
-    {
-        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
-            <p>
-                <strong>Name:</strong> @Html.DisplayFor(modelItem => item.Name)
-            </p>
-            <p>
-                <strong>Opinie:</strong> @Html.DisplayFor(modelItem => item.Opinie)
-            </p>
-            <p>
-                <strong>Rating:</strong>
-                <span>@Model.GetStarRating(item.Nota)</span>
-            </p>
-            @if (User.IsInRole("Admin"))
-            {
-                <p>
-
-                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
-                </p>
-            }
-
+                    </div>
+                }
+            </div>
+            
         </div>
-    }
-</div>
+    </div>
+
+
+</body>

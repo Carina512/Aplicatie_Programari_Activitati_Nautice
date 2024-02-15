@@ -26,10 +26,7 @@ namespace Aplicatie_Programari_Activitati_Nautice.Data
                 .Property(a => a.Pret)
                 .HasColumnType("decimal(18,2)");
 
-            // Configurare pentru tabela Programare
-            modelBuilder.Entity<Programare>()
-                .Property(p => p.PretTotal)
-                .HasColumnType("decimal(18,2)");
+            
         }
 
 

@@ -4,16 +4,26 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
 
+</head>
 <body >
+    <img src="~/css/poza.jpg" alt="Imagine de fundal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7;">
 
-    <h1>Activitati</h1>
+   
     <hr style="border: none; height: 2px; background-color: #3ecae9;">
-
+    <div style="display: flex; justify-content: space-between;">
+        <h1 style="margin-right: auto;">Activitati</h1>
+    @if (User.IsInRole("Admin"))
+{
     <p>
-        <a asp-page="Create">Adauga o activitate</a>
+        <a asp-page="Create" class="custom-button">Adauga o activitate</a>
     </p>
-    <div style="display:flex; gap:20px;">
+}
+    </div>
+    <p>*preturile sunt exprimate in lei</p>
+    <div style="display:flex; gap:20px;flex-wrap:wrap;">
         @foreach (var item in Model.Activitate)
         {
             <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
@@ -24,18 +34,20 @@
                     <strong>Prenume:</strong> @Html.DisplayFor(modelItem => item.Descriere)
                 </p>
                 <p>
-                    <strong>Specializare:</strong> @Html.DisplayFor(modelItem => item.Durata)
+                    <strong>Denumire:</strong> @Html.DisplayFor(modelItem => item.Durata)
                 </p>
                 <p>
-                    <strong>Descriere:</strong> @Html.DisplayFor(modelItem => item.Pret)
+                    <strong>Pret:</strong> @Html.DisplayFor(modelItem => item.Pret)
                 </p>
-           
+
+                @if (User.IsInRole("Admin"))
+                {
                     <p>
                         <a asp-page="./Edit" asp-route-id="@item.ID">Modifica</a> |
                         <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
                         <a asp-page="./Delete" asp-route-id="@item.ID">Sterge</a>
                     </p>
-            
+                }
             
             </div>
         }

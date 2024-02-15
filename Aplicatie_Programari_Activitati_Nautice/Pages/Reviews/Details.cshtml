@@ -4,35 +4,43 @@
 @{
     ViewData["Title"] = "Details";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
 
-<h1>Detalii recenzie</h1>
-<hr style="border: none; height: 2px; background-color: #3ecae9;">
+</head>
+<body>
+    <img src="~/css/poza.jpg" alt="Imagine de fundal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7;">
 
-<div>
-    <h4>Review</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Review.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Review.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Review.Opinie)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Review.Opinie)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Review.Nota)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Review.Nota)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Review?.ID">Edit</a> |
-    <a asp-page="./Index">Inapoi</a>
-</div>
+    <h1>Detalii recenzie</h1>
+    <hr style="border: none; height: 2px; background-color: #3ecae9;">
+
+    <div>
+        <h4>Review</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Review.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Review.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Review.Opinie)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Review.Opinie)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Review.Nota)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Review.Nota)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Review?.ID">Edit</a> |
+        <a asp-page="./Index">Inapoi</a>
+    </div>
+</body>
+

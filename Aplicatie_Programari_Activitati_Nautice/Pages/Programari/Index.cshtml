@@ -4,47 +4,61 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
 
-<h1>Programari</h1>
-<hr style="border: none; height: 2px; background-color: #3ecae9;">
+</head>
+<body>
+    <img src="~/css/poza.jpg" alt="Imagine de fundal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7;">
 
-<p>
-    <a asp-page="Create">Fa-ti o programare!</a>
-</p>
+    <h1>Programari</h1>
+    <hr style="border: none; height: 2px; background-color: #3ecae9;">
 
-@foreach (var item in Model.Programare) {
-    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            <a asp-page="Create" class="custom-button">Fa-ti o programare!</a>
+        </p>
+    }
+    <div style="display:flex; gap:20px;flex-wrap:wrap;">
+    @foreach (var item in Model.Programare)
+    {
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius:10px; display: flex; flex-direction: column; width:300px; overflow:auto; background-color:white; box-shadow: 0 8px 12px #3ecae9;">
 
-                <div style="flex: 1;">
-                    <p><strong>Nume:</strong> @item.Nume</p>
-                    <p><strong>Prenume:</strong> @item.Prenume</p>
+            <div style="flex: 1;">
+                <p><strong>Nume:</strong> @item.Nume</p>
+                <p><strong>Prenume:</strong> @item.Prenume</p>
 
 
-                    @if (item.Activitate != null)
+                @if (item.Activitate != null)
+                {
+                    <p><strong>Activitatea aleasa</strong> @item.Activitate.Denumire</p>
+                }
+                else
+                {
+                    <p><strong>Activitatea aleasa:</strong> Nu există informații</p>
+                }
+                <p><strong>Data programarii:</strong> @item.Data</p>
+                <p><strong>Numar persoane:</strong> @item.NrPersoane</p>
+                
+
+
+
+                <p>
+                    @if (User.IsInRole("Admin"))
                     {
-                <p><strong>Activitatea aleasa</strong> @item.Activitate.Denumire</p>
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Sterge programarea | </a>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Modifica programarea | </a>
                     }
-                    else
-                    {
-                        <p><strong>Activitatea aleasa:</strong> Nu există informații despre medic</p>
-                    }
-                    <p><strong>Data programarii:</strong> @item.Data</p>
-                    <p><strong>Numar persoane:</strong> @item.NrPersoane</p>
-                    <p><strong>Pret:</strong> @item.PretTotal</p>
 
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii programare</a>
 
-
-                    <p>
-                       
-                            <a asp-page="./Delete" asp-route-id="@item.ID">Sterge programarea | </a>
-                            <a asp-page="./Edit" asp-route-id="@item.ID">Modifica programarea | </a>
-                        
-
-                        <a asp-page="./Details" asp-route-id="@item.ID">Detalii programare</a>
-
-                    </p>
-                </div>
+                </p>
             </div>
-}
-   
+        </div>
+    }
+    </div>
+
+</body>
+
 

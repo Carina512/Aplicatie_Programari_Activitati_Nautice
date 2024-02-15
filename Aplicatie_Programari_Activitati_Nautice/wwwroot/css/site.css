@@ -1,10 +1,10 @@
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -12,7 +12,52 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
-  margin-bottom: 60px;
+    background-image: url('/wwwroot/css/background.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    background-color: mintcream;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+    .custom-button:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+/* Stilizare pentru div */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Stilizare pentru titluri */
+h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Stilizare pentru paragrafe */
+p {
+    line-height: 1.6;
+    color: #666;
+    justify-content: center;
+    align-content: center;
+}
+
